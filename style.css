@@ -1,0 +1,95 @@
+body {
+  font-family: helvetica, arial, sans-serif;
+  margin: 2em;
+  
+  /* adapted from https://leaverou.github.io/css3patterns/#stairs by Logan McBroom */
+  background: linear-gradient(63deg, #eee 23%, transparent 23%) 7px 0,
+    linear-gradient(63deg, transparent 74%, #eee 78%),
+    linear-gradient(63deg, transparent 34%, #eee 38%, #eee 58%, transparent 62%),
+    #e1e1e1;
+  background-size: 16px 48px;
+}
+
+h1,h2,h3,h4,h5 {
+  font-family: 'Fredoka One', cursive;
+  letter-spacing: 1.5px;
+  color: royalblue;
+}
+
+nav h1 {
+  font-size: 2.5rem;
+  letter-spacing: .3ch;
+  margin: auto;
+}
+
+nav {
+  width: 750px;
+  height: 750px;
+  margin: auto;
+  display: flex;
+  position: relative;
+}
+
+nav ul {
+  list-style: none;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  left: 50%;
+  top: 50%;
+}
+
+nav a {
+  border: 1px solid currentColor;
+  display: inline-block;
+  position: absolute;
+  width: max-content;
+
+  transform: translate(-50%, -50%);
+  --rotate: calc((var(--n) - 2) * (360deg / var(--sections)));
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--rotate))
+    translateX(300px)
+    rotate(calc(var(--rotate) * -1 + var(--dir) * -10deg))
+    var(--hover, );
+}
+
+nav li {
+  font-weight: bold;
+  display: block;
+  background-color: whitesmoke;
+  padding: 1rem 1.5rem;
+}
+
+nav li::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;  
+  background-color: currentColor;
+  transform: translate(3px, calc(-5px * var(--dir)));
+}
+
+nav a:hover {
+  --hover: translate(5px, 5px) rotate(calc(10deg * var(--dir)));
+}
+
+nav a:hover li::after {
+  transform:
+    translate(25%, calc(-25% * var(--dir)))
+    rotate(calc(10deg * var(--dir)));
+}
+
+nav a:nth-child(1) { --n: 1; --dir:  1; color: crimson; }
+nav a:nth-child(2) { --n: 2; --dir: -1; color: teal;}
+nav a:nth-child(3) { --n: 3; --dir:  1; color: fuchsia;}
+nav a:nth-child(4) { --n: 4; --dir: -1; color: orange;}
+nav a:nth-child(5) { --n: 5; --dir:  1; color: chartreuse;}
+nav a:nth-child(6) { --n: 6; --dir: -1; color: cornflowerblue;}
+nav a:nth-child(7) { --n: 7; --dir:  1; color: green;}
+nav a:nth-child(8) { --n: 8; --dir: -1; color: darkorchid;}
